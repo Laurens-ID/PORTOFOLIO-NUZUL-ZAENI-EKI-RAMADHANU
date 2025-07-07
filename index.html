@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Interaktif - Nuzul Zaeni Ramadhanu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #0a0e1a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px 20px;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-item {
+            margin: 0;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link.active,
+        .nav-link:hover {   
+            background: #00d4ff;
+            color: white;
+        }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Cover Section */
+        .cover-section {
+            height: 100vh;
+            background: url('Images/BG.jpg') no-repeat center center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+
+        .cover-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 26, 0.7);
+            z-index: 1;
+        }
+
+        .cover-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .cover-subtitle {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .cover-description {
+            font-size: 1.2rem;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 1rem;
+        }
+
+        /* Personal Profile Section */
+        .profile-section {
+            min-height: 100vh;
+            background: #0a0e1a;
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 20px;
+            margin-top: 80px; /* Buffer tambahan */
+        }
+
+        .profile-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .profile-text {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .profile-text h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .profile-text h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .profile-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+
+        .profile-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #00d4ff;
+            color: #0a0e1a;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .profile-button:hover {
+            background: #00b4d8;
+        }
+
+        .profile-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .profile-social a {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .profile-social a:hover {
+            color: #00b4d8;
+        }
+
+        .profile-visual {
+            flex: 1;
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-photo {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-photo::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cpath d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" fill="none" stroke="%2300d4ff" stroke-width="5"/%3E%3C/svg%3E') no-repeat center;
+            background-size: 120%;
+            z-index: -1;
+            filter: blur(5px);
+            opacity: 0.7;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: #0a0e1a;
+            padding: 10px 0;
+            min-height: 100vh;
+        }
+
+        .skills-title {
+            text-align: center;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .skills-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 2px;
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 4rem;
+            margin-top: 1rem;
+        }
+
+        .skills-column {
+            flex: 1;
+            min-width: 0;
+            max-width: 50%;
+        }
+
+        .skills-column-title {
+            text-align: center;
+            color: #00d4ff;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .skills-column-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #00d4ff;
+            border-radius: 2px;
+        }
+
+        .skills-grid-soft {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            justify-items: center;
+        }
+
+        .skills-grid-software {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            justify-items: center;
+        }
+
+        .skill-card {
+            background: rgba(30, 39, 46, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+            max-width: 180px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        .skill-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            min-height: 100vh;
+            background: #0a0e1a;
+            padding: 20px 0;
+        }
+
+        .projects-title {
+            text-align: center;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .projects-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .project-card {
+            background: #2c3e50;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            color: #fff;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .view-project {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .view-project:hover {
+            background: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Publications Section */
+        .publications-section {
+            min-height: 100vh;
+            background: #0a0e1a;
+            padding: 20px 0;
+        }
+
+        .publications-title {
+            text-align: center;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .publications-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 2px;
+        }
+
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .publication-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 39, 46, 0.8);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .publication-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            color: #00d4ff;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+
+        .publication-link {
+            padding: 0.5rem 1rem;
+            background: #00d4ff;
+            color: #0a0e1a;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .publication-link:hover {
+            background: #00b4d8;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .publication-title {
+                font-size: 1rem;
+            }
+
+            .publication-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .publication-item {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .publication-link {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            color: #fff;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+            loading: lazy;
+        }
+
+        .modal-content p {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .modal-content a:hover {
+            color: #00b4d8;
+        }
+
+        .modal-content button {
+            background: #00d4ff;
+            color: #0a0e1a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background: #00b4d8;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            min-height: 100vh;
+            background: #0a0e1a;
+            padding: 50px 0;
+            margin-top: 20px;
+        }
+
+        .contact-title {
+            text-align: center;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+
+        .contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 2px;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .contact-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f1320;
+            padding: 20px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .skills-container {
+                gap: 3rem;
+            }
+            .skills-grid-soft {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .skills-grid-software {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                transform: none;
+            }
+            
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cover-title {
+                font-size: 2.5rem;
+            }
+
+            .cover-subtitle {
+                font-size: 1.8rem;
+            }
+
+            .profile-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-text {
+                max-width: 100%;
+            }
+
+            .profile-photo {
+                width: 250px;
+                height: 333px;
+            }
+
+            .skills-container {
+                flex-direction: column;
+                gap: 4rem;
+            }
+
+            .skills-column {
+                max-width: 100%;
+            }
+
+            .skills-grid-soft,
+            .skills-grid-software {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .skill-card {
+                max-width: none;
+                padding: 1rem;
+            }
+
+            .skills-title {
+                font-size: 2.5rem;
+            }
+
+            .skills-column-title {
+                font-size: 1.8rem;
+            }
+
+            .projects-grid,
+            .publications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                flex-direction: column;
+            }
+
+            .project-card,
+            .publication-card,
+            .contact-card {
+                flex: 0 0 100%;
+            }
+
+            .modal-content {
+                max-width: 90%;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cover-title {
+                font-size: 2rem;
+            }
+
+            .cover-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .profile-photo {
+                width: 200px;
+                height: 266px;
+            }
+
+            .profile-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .profile-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid-soft,
+            .skills-grid-software {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-card {
+                padding: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            scroll-margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#cover" class="nav-link active">Cover</a></li>
+            <li class="nav-item"><a href="#profile" class="nav-link">Personal Profil</a></li>
+            <li class="nav-item"><a href="#skills" class="nav-link">Technical Skills</a></li>
+            <li class="nav-item"><a href="#projects" class="nav-link">Project</a></li>
+            <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Cover Section -->
+    <section id="cover" class="cover-section">
+        <div class="container">
+            <div class="cover-content">
+                <div class="cover-title">PORTOFOLIO</div>
+                <div class="cover-subtitle">NUZUL ZAENI<br>EKI RAMADHANU</div>
+                <div class="cover-description">TEKNIK ELEKTRO</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Profile Section -->
+    <section id="profile" class="profile-section section">
+        <div class="container">
+            <div class="profile-content">
+                <div class="profile-text">
+                    <h2>Hi, I'm Nuzul Zaeni Eki Ramadhanu</h2>
+                    <h3>Electrical Engineering Student</h3>
+                    <p>
+                        Saya adalah seorang mahasiswa universitas negeri malang pada program studi Teknik Elektro yang memiliki pengalaman beberapa organisasi kampus serta program-program penelitian dan pengabdian dengan minat yang kuat pada sistem kendali, otomasi, robotika, dan Instrumentasi. Saya mempunyai ketertarikan pada pengembangan Sistem elektrik dan Sistem kontrol yang cerdas,Serta membangun proyek praktis yang menggabungkan perangkat keras dan perangkat lunak.
+                    </p>
+                    <a href="#contact" class="profile-button">Hubungi Saya</a>
+                    <div class="profile-social">
+                        <a href="https://www.instagram.com/nuzuleki_/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/nuzul-zaeni-eki-ramadhanu-58282b370/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/6288230431356" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="profile-visual">
+                    <div class="profile-photo">
+                        <img src="Images/pp.jpg" alt="Nuzul Zaeni Eki Ramadhanu" 
+                             onerror="this.style.display='none';">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="skills-section section">
+        <div class="container">
+            <h2 class="skills-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skills-column">
+                    <h3 class="skills-column-title">Soft Skills</h3>
+                    <div class="skills-grid-soft">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-users"></i></div>
+                            <div class="skill-name">Teamwork and collaboration</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="skill-name">Problem-Solving</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-comment"></i></div>
+                            <div class="skill-name">Public Speaking</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-sync-alt"></i></div>
+                            <div class="skill-name">Adaptability</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-column">
+                    <h3 class="skills-column-title">Software Skills</h3>
+                    <div class="skills-grid-software">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="Images/Arduino-logo.jpg" alt="Arduino" class="skill-logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo+Tidak+Ditemukan';">
+                            </div>
+                            <div class="skill-name">Arduino</div>
+                            <div class="skill-desc">Microcontroller</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="Images/Autodesk Fusion 360-logo.jpg" alt="Python" class="skill-logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo+Tidak+Ditemukan';">
+                            </div>
+                            <div class="skill-name">3D Fusion</div>
+                            <div class="skill-desc">3D Design</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="Images/Easyeda-logo.jpg" alt="EasyEDA" class="skill-logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo+Tidak+Ditemukan';">
+                            </div>
+                            <div class="skill-name">EasyEDA</div>
+                            <div class="skill-desc">PCB Design</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="Images/Fritzing-logo.jpg" alt="Fritzing" class="skill-logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo+Tidak+Ditemukan';">
+                            </div>
+                            <div class="skill-name">Fritzing</div>
+                            <div class="skill-desc">Circuit Design</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="Images/Proteus-logo.jpg" alt="Proteus" class="skill-logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo+Tidak+Ditemukan';">
+                            </div>
+                            <div class="skill-name">Proteus</div>
+                            <div class="skill-desc">Circuit Simulation</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="Images/VS Code.jpg" alt="C++" class="skill-logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo+Tidak+Ditemukan';">
+                            </div>
+                            <div class="skill-name">Visual Studio Code</div>
+                            <div class="skill-desc">Programming</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section section">
+        <div class="container">
+            <h2 class="projects-title">Project</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="showModal(1)">
+                    <div class="project-img">
+                        <img src="Imagesprojects/robot-tari.jpg" alt="Humanoid Robot Dance" onerror="this.src='https://via.placeholder.com/300x200?text=Gambar+Smart+Home+Tidak+Ditemukan';">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-title">Humanoid Robot Dance</div>
+                        <a href="#" class="view-project" onclick="event.preventDefault(); showModal(1);">Lihat Project...</a>
+                    </div>
+                </div>
+                <div class="project-card" onclick="showModal(2)">
+                    <div class="project-img">
+                        <img src="Imagesprojects/smart-cont.jpg" alt="Smart Container IoT" onerror="this.src='https://via.placeholder.com/300x200?text=Gambar+Power+Supply+Tidak+Ditemukan';">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-title">Smart Container IoT</div>
+                        <a href="#" class="view-project" onclick="event.preventDefault(); showModal(2);">Lihat Project...</a>
+                    </div>
+                </div>
+                <div class="project-card" onclick="showModal(3)">
+                    <div class="project-img">
+                        <img src="Imagesprojects/robot-sar.jpg" alt="Robot SAR" onerror="this.src='https://via.placeholder.com/300x200?text=Gambar+Robot+SAR+Tidak+Ditemukan';">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-title">Robot Search And Rescue</div>
+                        <a href="#" class="view-project" onclick="event.preventDefault(); showModal(3);">Lihat Project...</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="projectModal">
+                <div class="modal-content">
+                    <h2 id="project-title">Detail Proyek</h2>
+                    <h3>Desain Rangkaian</h3>
+                    <img id="project-circuit" src="" alt="Desain Rangkaian" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=Gambar+Rangkaian+Tidak+Ditemukan';">
+                    <h3>Video & Foto</h3>
+                    <div class="media-container">
+                        <video id="project-video" controls loading="lazy">
+                            <source src="" type="video/mp4">
+                            Browser Anda tidak mendukung elemen video.
+                        </video>
+                        <img id="project-foto" src="" alt="Foto Dokumentasi" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=Foto+Tidak+Ditemukan';">
+                    </div>
+                    <p id="project-docs"></p>
+                    <a id="project-docs-link" href="" target="_blank" style="display: none;">Buka Folder Dokumentasi</a>
+                    <button onclick="closeModal()">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications-section section">
+        <div class="container">
+            <h2 class="publications-title">Publications</h2>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <span class="publication-title">Implementation of Raspberry Pi As A2dp Module On The Quality of Song Reception of Humanoid Robot</span>
+                    <a href="https://lentera.publikasiku.id/index.php/ln/article/view/123/240" target="_blank" class="publication-link">Link</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section">
+        <div class="container">
+            <h2 class="contact-title">Contact</h2>
+            <div class="contact-grid">
+                <a href="mailto:nuzuleki098@email.com" style="text-decoration: none; color: inherit;">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-info">nuzuleki098@email.com</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/6288230431356" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="contact-label">WhatsApp</div>
+                        <div class="contact-info">Nuzul Zaeni Eki Ramadhanu</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/nuzul-zaeni-eki-ramadhanu-58282b370/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-info">Nuzul Zaeni Eki Ramadhanu</div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/nuzuleki_/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                        <div class="contact-label">Instagram</div>
+                        <div class="contact-info">@nuzuleki_</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Nuzul Zaeni Eki Ramadhanu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation active state (updated to include publications)
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+
+        function setActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveNav);
+
+        // Smooth scrolling for navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    if (!entry.target.classList.contains('project-card') && !entry.target.classList.contains('publication-card')) {
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card, .publication-card, .contact-card').forEach(card => {
+            card.style.opacity = '0';
+            if (!card.classList.contains('project-card') && !card.classList.contains('publication-card')) {
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            } else {
+                card.style.transition = 'opacity 0.6s ease';
+            }
+            observer.observe(card);
+        });
+
+        // Project data
+        const projects = {
+            1: {
+                title: "Humanoid Robot Dance",
+                circuit: "Imagesprojects/Schematic_KRSTI.jpg",
+                docs: "Humanoid Robot Dance atau Robot Tari adalah robot yang dirancang untuk menampilkan tarian tertentu dengan diiringi oleh musik, biasanya dilombakan dalam Kontes Robot Indonesia (KRI) pada divisi KRSTI (Kontes Robot Seni Tari Indonesia). Saya berperan sebagai Support Electrical and Mechanical Division periode 2023–2024, dengan kontribusi dalam Perakitan sistem PCB, Proses penyolderan, Pembuatan dan manajemen kabel, Greasing dan perawatan servo, dan perakitan struktur mekanik",
+                docsLink: "https://github.com/Laurens-ID/PORTOFOLIO-NUZUL-ZAENI-EKI-RAMADHANU/raw/refs/heads/main/Project%20KRSTI.zip",
+                video: "Videos/robot-tari-3.mp4",
+                foto: "Imagesprojects/robot-tari-2.jpg"
+            },
+            2: {
+                title: "Smart Container IoT",
+                circuit: "Imagesprojects/rel.jpg",
+                docs: "Proyek ini bertujuan untuk meningkatkan kualitas dan masa simpan produk makanan biting melalui sistem pengawetan berbasis smart container dengan dukungan teknologi Internet of Things (IoT). Saya berperan sebagai Perancangan dan integrasi sistem elektrik, Pembuatan dan instalasi panel box, pembiuatan kode program system pada  mikrokontroler, Proses penyolderan dan perakitan modul, Manajemen kabel dan penataan sistem di dalam box dan Pengujian fungsi sistem secara keseluruhan dengan dibantu oleh rekan tim saya.",
+                docsLink: "https://github.com/Laurens-ID/PORTOFOLIO-NUZUL-ZAENI-EKI-RAMADHANU/raw/refs/heads/main/Project%20Smart%20Container.zip",
+                video: "Videos/smart-demo.mp4",
+                foto: "Imagesprojects/PB-Cont.jpg"
+            },
+            3: {
+                title: "Robot SAR (Search And Rescue)",
+                circuit: "Imagesprojects/schematic-sar.jpg",
+                docs: "Robot Search and Rescue (SAR) adalah robot berkaki (hexapod) yang dirancang untuk melakukan simulasi misi pencarian dan penyelamatan di area bencana (Arena), biasnya dilombakan dalam Kontes Robot Indonesia (KRI) pada divisi KRSRI (Kontes Robot SAR Indonesia). Saya berperan sebagai Electrical Division periode 2025-2026, dengan kontribusi dalam Perakitan sistem elektronik dan kabel, Perakitan sistem PCB, Penyolderan dan penataan rangkaian pada robot dan Penyesuaian wiring serta layout sistem pada bodi robot.",
+                docsLink: "https://github.com/Laurens-ID/PORTOFOLIO-NUZUL-ZAENI-EKI-RAMADHANU/raw/refs/heads/main/Project%20KRSRI.zip",
+                video: "Videos/robot-sar-demo.mp4",
+                foto: "Imagesprojects/robot-sar-foto.jpg"
+            }
+        };
+
+        // Publication data
+        const publications = {
+            1: {
+                title: "Smart Container IoT Research",
+                image: "Images/publications/publication1.jpg",
+                docs: "Publikasi ini membahas pengembangan smart container berbasis IoT untuk pengawetan makanan, diterbitkan dalam jurnal teknologi pangan. Penelitian ini mencakup desain sistem, implementasi sensor, dan analisis data untuk meningkatkan masa simpan produk.",
+                docsLink: "https://example.com/publication1.pdf"
+            },
+            2: {
+                title: "Robotics in Disaster Response",
+                image: "Images/publications/publication2.jpg",
+                docs: "Penelitian ini mengeksplorasi penggunaan robot hexapod dalam misi pencarian dan penyelamatan, diterbitkan dalam konferensi robotika nasional. Fokusnya adalah pada desain elektronik dan algoritma navigasi di lingkungan bencana.",
+                docsLink: "https://example.com/publication2.pdf"
+            }
+        };
+
+        function showModal(id) {
+            const project = projects[id];
+            if (!project) {
+                alert('Proyek tidak ditemukan!');
+                return;
+            }
+
+            document.getElementById('project-title').textContent = project.title;
+            document.getElementById('project-circuit').src = project.circuit;
+            document.getElementById('project-docs').textContent = project.docs;
+
+            const docsLink = document.getElementById('project-docs-link');
+            docsLink.href = project.docsLink || '#';
+            docsLink.style.display = project.docsLink ? 'inline-block' : 'none';
+
+            const video = document.getElementById('project-video');
+            if (project.video) {
+                video.querySelector('source').src = project.video;
+                video.load();
+                video.style.display = 'block';
+            } else {
+                video.style.display = 'none';
+            }
+
+            const foto = document.getElementById('project-foto');
+            if (project.foto) {
+                foto.src = project.foto;
+                foto.style.display = 'block';
+            } else {
+                foto.style.display = 'none';
+            }
+
+            document.getElementById('projectModal').classList.add('show');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('show');
+            const video = document.getElementById('project-video');
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        function showPublicationModal(id) {
+            const publication = publications[id];
+            if (!publication) {
+                alert('Publikasi tidak ditemukan!');
+                return;
+            }
+
+            document.getElementById('publication-title').textContent = publication.title;
+            document.getElementById('publication-image').src = publication.image;
+            document.getElementById('publication-docs').textContent = publication.docs;
+
+            const docsLink = document.getElementById('publication-docs-link');
+            docsLink.href = publication.docsLink || '#';
+            docsLink.style.display = publication.docsLink ? 'inline-block' : 'none';
+
+            document.getElementById('publicationModal').classList.add('show');
+        }
+
+        function closePublicationModal() {
+            const modal = document.getElementById('publicationModal');
+            modal.classList.remove('show');
+        }
+
+        document.getElementById('projectModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        document.getElementById('publicationModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePublicationModal();
+            }
+        });
+    </script>
+</body>
+</html>
